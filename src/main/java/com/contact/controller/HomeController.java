@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
-public class HomeController{ //Home Controller for github push comments
+public class HomeController{ //Home Controller For Github to push code for automate
 	
 	@Autowired
 	private BCryptPasswordEncoder passEncoder;
