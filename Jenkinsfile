@@ -2,7 +2,8 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "smart-contact-manager"
+        IMAGE_NAME = "smartcontactmanager-pipeline-app"
+        CONTAINER_NAME = "smart-contact-manager"
         COMPOSE_FILE = "docker-compose.yml"
     }
 
@@ -14,7 +15,7 @@ pipeline {
             }
         }
 
-        stage('Build JAR') {
+        stage('Build JAR (Skip Tests)') {
             steps {
                 sh './mvnw clean package -DskipTests'
             }
@@ -28,8 +29,24 @@ pipeline {
 
         stage('Deploy with Docker Compose') {
             steps {
-                sh 'docker-compose down || true'
-                sh 'docker-compose up -d --build'
+                script {
+                    // Stop and remove any existing containers
+                    sh 'docker-compose down || true'
+                    // Start containers
+                    sh 'docker-compose up -d --build'
+                }
+            }
+        }
+
+        stage('Health Check') {
+            steps {
+                script {
+                    // Simple retry logic to wait for the app to be ready
+                    retry(5) {
+                        sh 'sleep 5'
+                        sh 'curl --fail http://localhost:8085 || exit 1'
+                    }
+                }
             }
         }
     }
