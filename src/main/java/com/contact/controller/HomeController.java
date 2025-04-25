@@ -17,8 +17,9 @@ import com.contact.helper.Message;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
+//I have Automate it on jenkins. it will automatically dockerized, containerized and will deploy on local host.
 @Controller
-public class HomeController{ //Home Controller For Github to push code for automate
+public class HomeController{ 
 	
 	@Autowired
 	private BCryptPasswordEncoder passEncoder;
