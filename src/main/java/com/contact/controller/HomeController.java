@@ -17,6 +17,7 @@ import com.contact.helper.Message;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
+//This is home controller
 @Controller
 public class HomeController{ 
 	
