@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smart-contact-manager
+  namespace: smart-contact-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scm
+  template:
+    metadata:
+      labels:
+        app: scm
+    spec:
+      containers:
+        - name: scm
+          image: 123shashi/smart-contact-manager:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://mysql-service:3306/consma
+            - name: SPRING_DATASOURCE_USERNAME
+              value: root
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: 1@Shashikant
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: scm-service
+  namespace: smart-contact-ns
+spec:
+  type: NodePort
+  selector:
+    app: scm
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30080  # Optional fixed port (Minikube exposes this)
