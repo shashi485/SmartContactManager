@@ -1,18 +1,20 @@
+# -------------------------------------------------------
 # Docker Network
-
+# -------------------------------------------------------
 resource "docker_network" "scm_network" {
   name = "scm-network"
 }
 
+# -------------------------------------------------------
 # MySQL Image
-
+# -------------------------------------------------------
 resource "docker_image" "mysql_image" {
   name = "mysql:8"
 }
 
-
+# -------------------------------------------------------
 # MySQL Container
-
+# -------------------------------------------------------
 resource "docker_container" "mysql" {
   name  = "mysql-db"
   image = docker_image.mysql_image.name
@@ -37,11 +39,12 @@ resource "docker_container" "mysql" {
   }
 }
 
-
+# -------------------------------------------------------
 # Spring Boot App Image
-
+# IMPORTANT: Jenkins builds the image with this name
+# -------------------------------------------------------
 resource "docker_image" "scm_app" {
-  name = "smartcontactmanager-app"
+  name = var.image_name   # <--- FIXED
 
   build {
     context    = "../"
@@ -49,19 +52,21 @@ resource "docker_image" "scm_app" {
   }
 }
 
-
-# Spring Boot App Container
-
+# -------------------------------------------------------
+# Spring Boot Container
+# -------------------------------------------------------
 resource "docker_container" "scm" {
   name  = "smart-contact-manager"
-  image = var.image_name
+  image = docker_image.scm_app.name   # <--- FIXED
 
   depends_on = [
     docker_container.mysql
   ]
 
+  restart = "always"
+
   env = [
-    "SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/consma",
+    "SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/${var.mysql_database}",
     "SPRING_DATASOURCE_USERNAME=root",
     "SPRING_DATASOURCE_PASSWORD=${var.mysql_root_password}"
   ]
@@ -76,9 +81,9 @@ resource "docker_container" "scm" {
   }
 }
 
-
+# -------------------------------------------------------
 # Outputs
-
+# -------------------------------------------------------
 output "app_url" {
   value = "http://localhost:8085"
 }
@@ -86,7 +91,3 @@ output "app_url" {
 output "mysql_port" {
   value = "3307"
 }
-
-  
-  
-

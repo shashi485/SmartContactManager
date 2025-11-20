@@ -1,0 +1,148 @@
+
+Nagios Core 4.5.7
+Copyright (c) 2009-present Nagios Core Development Team and Community Contributors
+Copyright (c) 1999-2009 Ethan Galstad
+Last Modified: 2024-10-24
+License: GPL
+
+Website: https://www.nagios.org
+Nagios 4.5.7 starting... (PID=8)
+Local time is Mon Nov 17 17:23:05 UTC 2025
+wproc: Successfully registered manager as @wproc with query handler
+wproc: Registry request: name=Core Worker 9;pid=9
+wproc: Registry request: name=Core Worker 16;pid=16
+wproc: Registry request: name=Core Worker 13;pid=13
+wproc: Registry request: name=Core Worker 15;pid=15
+wproc: Registry request: name=Core Worker 10;pid=10
+wproc: Registry request: name=Core Worker 19;pid=19
+wproc: Registry request: name=Core Worker 20;pid=20
+wproc: Registry request: name=Core Worker 11;pid=11
+wproc: Registry request: name=Core Worker 12;pid=12
+wproc: Registry request: name=Core Worker 18;pid=18
+wproc: Registry request: name=Core Worker 17;pid=17
+wproc: Registry request: name=Core Worker 14;pid=14
+Successfully launched command file worker with pid 26
+Caught SIGTERM, shutting down...
+Successfully shutdown... (PID=8)
+
+Nagios Core 4.5.7
+Copyright (c) 2009-present Nagios Core Development Team and Community Contributors
+Copyright (c) 1999-2009 Ethan Galstad
+Last Modified: 2024-10-24
+License: GPL
+
+Website: https://www.nagios.org
+Nagios 4.5.7 starting... (PID=8)
+Local time is Mon Nov 17 17:35:33 UTC 2025
+wproc: Successfully registered manager as @wproc with query handler
+wproc: Registry request: name=Core Worker 9;pid=9
+wproc: Registry request: name=Core Worker 10;pid=10
+wproc: Registry request: name=Core Worker 15;pid=15
+wproc: Registry request: name=Core Worker 11;pid=11
+wproc: Registry request: name=Core Worker 13;pid=13
+wproc: Registry request: name=Core Worker 14;pid=14
+wproc: Registry request: name=Core Worker 19;pid=19
+wproc: Registry request: name=Core Worker 18;pid=18
+wproc: Registry request: name=Core Worker 12;pid=12
+wproc: Registry request: name=Core Worker 16;pid=16
+wproc: Registry request: name=Core Worker 20;pid=20
+wproc: Registry request: name=Core Worker 17;pid=17
+Successfully launched command file worker with pid 26
+Caught SIGTERM, shutting down...
+Successfully shutdown... (PID=8)
+
+Nagios Core 4.5.7
+Copyright (c) 2009-present Nagios Core Development Team and Community Contributors
+Copyright (c) 1999-2009 Ethan Galstad
+Last Modified: 2024-10-24
+License: GPL
+
+Website: https://www.nagios.org
+Nagios 4.5.7 starting... (PID=8)
+Local time is Mon Nov 17 17:37:38 UTC 2025
+wproc: Successfully registered manager as @wproc with query handler
+wproc: Registry request: name=Core Worker 9;pid=9
+wproc: Registry request: name=Core Worker 10;pid=10
+wproc: Registry request: name=Core Worker 11;pid=11
+wproc: Registry request: name=Core Worker 14;pid=14
+wproc: Registry request: name=Core Worker 13;pid=13
+wproc: Registry request: name=Core Worker 12;pid=12
+wproc: Registry request: name=Core Worker 15;pid=15
+wproc: Registry request: name=Core Worker 16;pid=16
+wproc: Registry request: name=Core Worker 17;pid=17
+wproc: Registry request: name=Core Worker 19;pid=19
+wproc: Registry request: name=Core Worker 18;pid=18
+wproc: Registry request: name=Core Worker 20;pid=20
+Successfully launched command file worker with pid 26
+Caught SIGTERM, shutting down...
+Successfully shutdown... (PID=8)
+
+Nagios Core 4.5.7
+Copyright (c) 2009-present Nagios Core Development Team and Community Contributors
+Copyright (c) 1999-2009 Ethan Galstad
+Last Modified: 2024-10-24
+License: GPL
+
+Website: https://www.nagios.org
+Nagios 4.5.7 starting... (PID=8)
+Local time is Wed Nov 19 18:57:21 UTC 2025
+wproc: Successfully registered manager as @wproc with query handler
+wproc: Registry request: name=Core Worker 9;pid=9
+wproc: Registry request: name=Core Worker 10;pid=10
+wproc: Registry request: name=Core Worker 12;pid=12
+wproc: Registry request: name=Core Worker 13;pid=13
+wproc: Registry request: name=Core Worker 15;pid=15
+wproc: Registry request: name=Core Worker 16;pid=16
+wproc: Registry request: name=Core Worker 11;pid=11
+wproc: Registry request: name=Core Worker 20;pid=20
+wproc: Registry request: name=Core Worker 19;pid=19
+wproc: Registry request: name=Core Worker 14;pid=14
+wproc: Registry request: name=Core Worker 18;pid=18
+wproc: Registry request: name=Core Worker 17;pid=17
+Successfully launched command file worker with pid 26
+Caught SIGTERM, shutting down...
+Successfully shutdown... (PID=8)
+
+Nagios Core 4.5.7
+Copyright (c) 2009-present Nagios Core Development Team and Community Contributors
+Copyright (c) 1999-2009 Ethan Galstad
+Last Modified: 2024-10-24
+License: GPL
+
+Website: https://www.nagios.org
+Nagios 4.5.7 starting... (PID=8)
+Local time is Thu Nov 20 09:00:31 UTC 2025
+wproc: Successfully registered manager as @wproc with query handler
+wproc: Registry request: name=Core Worker 10;pid=10
+wproc: Registry request: name=Core Worker 9;pid=9
+wproc: Registry request: name=Core Worker 20;pid=20
+wproc: Registry request: name=Core Worker 15;pid=15
+wproc: Registry request: name=Core Worker 16;pid=16
+wproc: Registry request: name=Core Worker 13;pid=13
+wproc: Registry request: name=Core Worker 14;pid=14
+wproc: Registry request: name=Core Worker 12;pid=12
+wproc: Registry request: name=Core Worker 11;pid=11
+wproc: Registry request: name=Core Worker 18;pid=18
+wproc: Registry request: name=Core Worker 19;pid=19
+wproc: Registry request: name=Core Worker 17;pid=17
+Successfully launched command file worker with pid 26
+wproc: NOTIFY job 0 from worker Core Worker 9 is a non-check helper but exited with return code 127
+wproc:   host=mysql-db; service=(none); contact=nagiosadmin
+wproc:   early_timeout=0; exited_ok=1; wait_status=32512; error_code=0;
+wproc:   stderr line 01: /bin/sh: 1: /usr/bin/mail: not found
+wproc:   stderr line 02: /usr/bin/printf: write error: Broken pipe
+wproc: NOTIFY job 0 from worker Core Worker 16 is a non-check helper but exited with return code 127
+wproc:   host=springboot-app; service=(none); contact=nagiosadmin
+wproc:   early_timeout=0; exited_ok=1; wait_status=32512; error_code=0;
+wproc:   stderr line 01: /bin/sh: 1: /usr/bin/mail: not found
+wproc:   stderr line 02: /usr/bin/printf: write error: Broken pipe
+wproc: NOTIFY job 2 from worker Core Worker 15 is a non-check helper but exited with return code 127
+wproc:   host=mysql-db; service=(none); contact=nagiosadmin
+wproc:   early_timeout=0; exited_ok=1; wait_status=32512; error_code=0;
+wproc:   stderr line 01: /bin/sh: 1: /usr/bin/mail: not found
+wproc:   stderr line 02: /usr/bin/printf: write error: Broken pipe
+wproc: NOTIFY job 2 from worker Core Worker 14 is a non-check helper but exited with return code 127
+wproc:   host=springboot-app; service=(none); contact=nagiosadmin
+wproc:   early_timeout=0; exited_ok=1; wait_status=32512; error_code=0;
+wproc:   stderr line 01: /bin/sh: 1: /usr/bin/mail: not found
+wproc:   stderr line 02: /usr/bin/printf: write error: Broken pipe

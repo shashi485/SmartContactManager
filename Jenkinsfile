@@ -56,8 +56,8 @@ pipeline {
             steps {
                 script {
                     // Simple retry logic to wait for the app to be ready
-                    retry(5) {
-                        sh 'sleep 5'
+                    retry(10) {
+                        sh 'sleep 10'
                         sh 'curl --fail http://localhost:8085 || exit 1'
                     }
                 }
