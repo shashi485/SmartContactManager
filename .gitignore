@@ -34,3 +34,5 @@ build/
 terraform/data/
 nagios/
 .DS_Store
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
