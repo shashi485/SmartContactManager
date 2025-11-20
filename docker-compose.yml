@@ -21,7 +21,23 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/consma
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: 1@Shashikant
-    restart: on-failure  # Optional but good for dev
+    restart: on-failure
+
+  nagios:
+    image: jasonrivers/nagios:latest
+    container_name: nagios
+    ports:
+      - "9086:80"
+    environment:
+      NAGIOSADMIN_USER: nagiosadmin
+      NAGIOSADMIN_PASS: admin
+    volumes:
+      - ./nagios/etc:/opt/nagios/etc
+      - ./nagios/var:/opt/nagios/var
+    depends_on:
+      - app
+      - db
+    restart: on-failure
 
 volumes:
   db_data:

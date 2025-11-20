@@ -3,8 +3,9 @@ pipeline {
 
     environment {
         IMAGE_NAME = "smartcontactmanager-pipeline-app"
-        CONTAINER_NAME = "smart-contact-manager"
-        COMPOSE_FILE = "docker-compose.yml"
+        //CONTAINER_NAME = "smart-contact-manager"
+        //COMPOSE_FILE = "docker-compose.yml"
+        TERRAFORM_DIR = "terraform"
     }
 
     stages {
@@ -26,14 +27,27 @@ pipeline {
                 sh 'docker build -t $IMAGE_NAME .'
             }
         }
-
-        stage('Deploy with Docker Compose') {
+        
+        stage('Terraform Init') {
             steps {
-                script {
-                    // Stop and remove any existing containers
-                    sh 'docker-compose down || true'
-                    // Start containers
-                    sh 'docker-compose up -d --build'
+                dir("${TERRAFORM_DIR}") {
+                    sh "terraform init"
+                }
+            }
+        }
+
+        stage('Terraform Plan') {
+            steps {
+                dir("${TERRAFORM_DIR}") {
+                    sh "terraform plan"
+                }
+            }
+        }
+
+        stage('Terraform Apply') {
+            steps {
+                dir("${TERRAFORM_DIR}") {
+                    sh "terraform apply -auto-approve"
                 }
             }
         }
