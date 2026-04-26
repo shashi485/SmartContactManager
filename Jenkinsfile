@@ -28,11 +28,24 @@ pipeline {
             }
         }
         
+        stage('Load Image to Minikube') {
+            steps {
+                sh 'minikube image load $IMAGE_NAME'
+            }
+        }
+
         stage('Deploy to Kubernetes') {
-			 steps {
-			   sh 'kubectl apply -f k8s/'
-			 }
-		}
+            steps {
+                sh 'kubectl apply -f kubernetes/'
+                sh 'kubectl rollout restart deployment scm-app'
+            }
+        }
+
+        stage('Wait for Rollout') {
+            steps {
+                sh 'kubectl rollout status deployment scm-app'
+            }
+        }
         
         stage('Terraform Init') {
             steps {
@@ -65,6 +78,8 @@ pipeline {
                     retry(10) {
                         sh 'sleep 10'
                         sh 'curl --fail http://localhost:8085 || exit 1'
+                        sh 'kubectl get pods -l app=scm-app'
+                		sh 'kubectl get svc scm-service'
                     }
                 }
             }
@@ -79,7 +94,7 @@ pipeline {
             echo '❌ Deployment failed.'
         }
         always {
-            echo '🔁 CI/CD pipeline run completed.'
+            echo '🔁 Build completed.'
         }
     }
 }
