@@ -84,6 +84,23 @@ pipeline {
                 }
             }
         }
+        stage('Verify Metrics') {
+            steps {
+                script {
+                    sh '''
+                    POD=$(kubectl get pods -l app=scm-app -o jsonpath="{.items[0].metadata.name}")
+                    kubectl exec $POD -- curl -s http://localhost:8080/actuator/prometheus | head
+                    '''
+                }
+            }
+        }
+
+        stage('Cluster Monitoring Status') {
+            steps {
+                sh 'kubectl get pods'
+                sh 'kubectl top pods || true'
+            }
+        }
     }
 
     post {
