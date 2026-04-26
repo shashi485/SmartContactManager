@@ -63,8 +63,12 @@ public class MyConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/user/**").hasRole("USER")
-                .requestMatchers("/", "/signin", "/signup", "/do_register", "/css/**", "/js/**").permitAll()
-                .anyRequest().authenticated()
+                .requestMatchers("/actuator/**").permitAll()
+                .requestMatchers(
+                	    "/", "/signin", "/signup", "/do_register",
+                	    "/css/**", "/js/**"
+                	).permitAll()
+                	.anyRequest().authenticated()
             )
             .formLogin(form -> form
                 .loginPage("/signin")  // Custom login page

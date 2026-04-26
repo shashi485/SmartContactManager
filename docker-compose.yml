@@ -1,43 +1,49 @@
+version: "3.9"
+
 services:
-  db:
+  mysql:
     image: mysql:8
     container_name: mysql-db
     environment:
-      MYSQL_DATABASE: consma
       MYSQL_ROOT_PASSWORD: 1@Shashikant
+      MYSQL_DATABASE: consma
     ports:
       - "3307:3306"
+    networks:
+      - scm-network
     volumes:
-      - db_data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
 
   app:
-    build: .
+    image: smartcontactmanager-pipeline-app
     container_name: smart-contact-manager
-    ports:
-      - "8085:8080"
-    depends_on:
-      - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/consma
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/consma
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: 1@Shashikant
-    restart: on-failure
+    depends_on:
+      - mysql
+    ports:
+      - "8085:8080"
+    networks:
+      - scm-network
 
   nagios:
-    image: jasonrivers/nagios:latest
+    image: jasonrivers/nagios
     container_name: nagios
     ports:
-      - "9086:80"
-    environment:
-      NAGIOSADMIN_USER: nagiosadmin
-      NAGIOSADMIN_PASS: admin
+      - "9081:80"
     volumes:
       - ./nagios/etc:/opt/nagios/etc
       - ./nagios/var:/opt/nagios/var
+    networks:
+      - scm-network
     depends_on:
+      - mysql
       - app
-      - db
-    restart: on-failure
+
+networks:
+  scm-network:
 
 volumes:
-  db_data:
+  mysql-data:
