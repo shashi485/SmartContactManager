@@ -125,4 +125,3 @@ output "app_url" {
 output "nagios_url" {
   value = "http://localhost:9086"
 }
-your client requires real time alerts whenever a web server goes down or cpu usage exceeds 85%.how can nagios be configured to monitor these parameters and send alerts to administrator.
