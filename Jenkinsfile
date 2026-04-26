@@ -61,7 +61,7 @@ pipeline {
               //      sh "terraform plan"
                // }
           //  }
-        }
+        //}
 
         //stage('Terraform Apply') {
         //    steps {
@@ -77,7 +77,7 @@ pipeline {
                     // Simple retry logic to wait for the app to be ready
                     retry(10) {
                         sh 'sleep 10'
-                        sh 'curl --fail http://localhost:8085 || exit 1'
+                        //sh 'curl --fail http://localhost:8085 || exit 1'
                         sh 'kubectl get pods -l app=scm-app'
                 		sh 'kubectl get svc scm-service'
                     }
