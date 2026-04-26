@@ -85,15 +85,15 @@ pipeline {
             }
         }
         stage('Verify Metrics') {
-            steps {
-                script {
-                    sh '''
-                    POD=$(kubectl get pods -l app=scm-app -o jsonpath="{.items[0].metadata.name}")
-                    kubectl exec $POD -- curl -s http://localhost:8080/actuator/prometheus | head
-                    '''
-                }
-            }
-        }
+		    steps {
+		        sh '''
+		        kubectl port-forward svc/scm-service 8085:80 >/tmp/pf.log 2>&1 &
+		        sleep 8
+		        curl -f http://localhost:8085/actuator/prometheus | head
+		        pkill -f "kubectl port-forward" || true
+		        '''
+		    }
+		}
 
         stage('Cluster Monitoring Status') {
             steps {
